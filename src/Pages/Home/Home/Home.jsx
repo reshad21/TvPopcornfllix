@@ -30,10 +30,10 @@ const Home = () => {
     const imgUrl = 'https://image.tmdb.org/t/p/w500';
 
     return (
-        <div className='mx-auto max-w-7xl py-5'>
+        <div className='mx-auto max-w-7xl py-5 px-4'>
             <div className="flex flex-row justify-between gap-8">
                 <div className="basis-3/4">
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 lg:gap-5 md:gap-4">
                         <div className="card bg-base-100 shadow-xl">
                             <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                             <div className="card-body">
