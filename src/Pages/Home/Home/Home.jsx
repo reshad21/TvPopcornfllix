@@ -1,9 +1,33 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Home = () => {
     // const api = '/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10'
     // const thisYearapi = '/discover/movie?with_genres=18&primary_release_year=2014'
     // const key = process.env.SECRET_KEY;
+
+    const API_KEY = '60328c60edaea9ec7115178b6e8c7a3a';
+
+    const { data: sliders = [], isLoading } = useQuery({
+        queryKey: ['sliders'],
+        queryFn: async () => {
+            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`);
+            const data = await res.json();
+            return data.results;
+        }
+    })
+
+    console.log(sliders);
+
+    if (isLoading) {
+        return (
+            <div className='bg-white flex items-end justify-center h-[200px]'>
+                <h1 className='text-2xl font-semibold text-slate-600'>Loading...</h1>
+            </div>
+        )
+    }
+
+    const imgUrl = 'https://image.tmdb.org/t/p/w500';
 
     return (
         <div className='mx-auto max-w-7xl py-5'>
