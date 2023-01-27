@@ -9,7 +9,7 @@ const LatestItem = () => {
                         <img src="https://placeimg.com/200/280/arch" alt="Movie" className='h-14 w-full' />
                     </div>
                     <div className="card-body p-0 basis-3/4">
-                        <p className='pl-2'>Click the button to watch on Jetflix app.</p>
+                        <p className='px-2'>Click the button to watch on Jetflix app.</p>
                     </div>
                 </div>
             </div>
