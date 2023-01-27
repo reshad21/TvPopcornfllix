@@ -49,7 +49,11 @@ const Home = () => {
             </div>
             <div className="flex flex-row justify-between gap-8">
                 <div className="basis-3/4">
-                    <MainItem></MainItem>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 lg:gap-5 md:gap-4'>
+                        {
+                            sliders?.map(slider => <MainItem slider={slider}></MainItem>)
+                        }
+                    </div>
                 </div>
                 <div className="basis-1/4">
                     <h1 className='bg-[#0070e8] text-white px-2 py-3 font-semibold mb-3'>LATEST EPISODES</h1>
