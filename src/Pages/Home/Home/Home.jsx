@@ -1,7 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import LatestItem from '../../LatestItem/LatestItem';
+import MainItem from '../../MainItem/MainItem';
 
 const Home = () => {
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '52f6ae52d6mshd0444edb79c678bp195a94jsn8b52b2c677d8',
+            'X-RapidAPI-Host': 'netflix54.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://netflix54.p.rapidapi.com/search/?query=stranger&offset=0&limit_titles=50&limit_suggestions=20&lang=en', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
+
+
     const API_KEY = process.env.REACT_APP_apiKey;
     // console.log(API_KEY);
 
@@ -14,7 +32,7 @@ const Home = () => {
         }
     })
 
-    console.log(sliders);
+    // console.log(sliders);
 
     if (isLoading) {
         return (
@@ -26,98 +44,16 @@ const Home = () => {
 
     return (
         <div className='mx-auto max-w-7xl py-5 px-4'>
+            <div className="">
+                <p>Total items: {sliders.length}</p>
+            </div>
             <div className="flex flex-row justify-between gap-8">
                 <div className="basis-3/4">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 lg:gap-5 md:gap-4">
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <MainItem></MainItem>
                 </div>
                 <div className="basis-1/4">
-                    <h1 className='bg-[#0070e8] text-white px-2 py-3 font-semibold'>LATEST EPISODES</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore amet delectus pariatur iure recusandae distinctio nesciunt excepturi laboriosam fugiat eligendi dolor, molestiae doloribus quia ducimus! Iste, id esse. Beatae, facilis.</p>
+                    <h1 className='bg-[#0070e8] text-white px-2 py-3 font-semibold mb-3'>LATEST EPISODES</h1>
+                    <LatestItem></LatestItem>
                 </div>
             </div>
         </div>
